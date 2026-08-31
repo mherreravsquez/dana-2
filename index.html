@@ -1,49 +1,63 @@
 <!DOCTYPE html>
 <html lang="es">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>UlpoMedia</title>
-        <link rel="stylesheet" href="css/styles.css">
-        <script src="js/main.js" defer></script>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UlpoMedia</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/main.js" defer></script>
 
-    <body>
+    <!-- Navigation bar with an invisible background and floating buttons, like the Cyberpunk 2077 website https://www.cyberpunk.net/us/es/ -->
+    <nav>
+        <!-- Nav content here -->
+    </nav>
+</head>
 
-        <main>
-            <section class="hero">
+<body>
 
-                <div class="trailer-block">
-                    <div class="trailer-frame">
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+
+            <div class="trailer-block">
+                <div class="trailer-frame">
                     <!-- Starts muted so autoplay is allowed; the gate below unmutes on click -->
-                        <iframe
-                            id="trailer-iframe"
-                            src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1&mute=1&loop=1&playlist=VIDEO_ID&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1"
-                            title="Dana: The Cyber Relic — Trailer"
-                            allow="autoplay; encrypted-media; picture-in-picture"
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                
-                    <a class="steam-btn" href="https://store.steampowered.com/app/YOUR_APP_ID" target="_blank" rel="noopener">
-                    <img src="https://cdn.simpleicons.org/steam/ffffff" alt="">
-                    Wishlist on Steam!
-                    </a>
+                    <iframe
+                        id="trailer-iframe"
+                        src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1&mute=1&loop=1&playlist=VIDEO_ID&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1"
+                        title="Dana: The Cyber Relic — Trailer"
+                        allow="autoplay; encrypted-media; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
                 </div>
 
-            </section>
+                <a class="steam-btn" href="https://store.steampowered.com/app/YOUR_APP_ID" target="_blank" rel="noopener">
+                    <img src="https://cdn.simpleicons.org/steam/ffffff" alt="">
+                    Wishlist on Steam!
+                </a>
+            </div>
 
-            <section id="features">
-                <!-- Short description of the game -->
-                <!-- Movement, Levels, Narrative -->
-                <!-- Meme PS1 graphics (new gen graphics ultra) -->
-            </section>
+        </section>
 
-            <section id="gallery">
-                <!-- Gallery of screenshots + btn to download zip with presskit -->
+        <!-- Wave divider -->
+        <div class="wave-divider">
+            <svg viewBox="0 0 1200 80" preserveAspectRatio="none" style="display:block; width:100%; height:100%;">
+                <path d="M0,80 L0,40 C300,80 600,0 900,40 C1050,60 1150,20 1200,40 L1200,80 Z" fill="var(--accent-dark)"/>
+            </svg>
+        </div>
 
-                 <div class="carousel">
+        <!-- Features Section -->
+        <section id="features">
+            <div class="feature-highlight">
+                <div class="feature-text">
+                    <p class="feature-description">
+                        Dana 2 The Cyber Relic es un plataformero 3D en el que Dana consigue reliquias y pelea contra Bolseros!
+                    </p>
+                </div>
+
+                <!-- Carousel -->
+                <div class="carousel">
 
                     <button class="carousel-button prev">‹</button>
 
@@ -51,15 +65,15 @@
                         <div class="carousel-track">
 
                             <article class="carousel-item">
-                            <img src="./assets/media/bg.webp" alt="">
+                                <img src="./assets/media/bg.webp" alt="">
                             </article>
 
                             <article class="carousel-item active">
-                            <img src="./assets/media/bg.webp" alt="">
+                                <img src="./assets/media/bg.webp" alt="">
                             </article>
 
                             <article class="carousel-item">
-                            <img src="./assets/media/bg.webp" alt="">
+                                <img src="./assets/media/bg.webp" alt="">
                             </article>
 
                         </div>
@@ -74,14 +88,41 @@
                     </div>
 
                 </div>
+            </div>
+        </section>
 
-            </section>
+        <!-- Gallery Section -->
+        <section id="gallery">
+            <div class="gallery-header">
+                <h2 class="gallery-title">Multimedia</h2>
 
-            <section id="contact">
-                <!-- Social media (instagram, twt, web) for news-->
-            </section>
-        </main>
+                <!-- Assign the .zip file route with the presskit -->
+                <a class="presskit-btn" href="./assets/press-kit/DANA2TheCyberRelic-Press-Kit.zip" download>
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Download Press Kit
+                </a>
+            </div>
 
-    </body>
+            <div class="gallery-grid" id="gallery-grid">
+                <figure class="gallery-item"><img src="./assets/media/bg.webp" alt=""></figure>
+                <figure class="gallery-item"><img src="./assets/media/bg.webp" alt=""></figure>
+                <figure class="gallery-item"><img src="./assets/media/bg.webp" alt=""></figure>
+                <figure class="gallery-item"><img src="./assets/media/bg.webp" alt=""></figure>
+                <figure class="gallery-item"><img src="./assets/media/bg.webp" alt=""></figure>
+                <figure class="gallery-item"><img src="./assets/media/bg.webp" alt=""></figure>
+            </div>
+
+            <button class="gallery-toggle" id="gallery-toggle" type="button">Show More</button>
+        </section>
+
+        <!-- Contact Section (social media) -->
+        <section id="contact">
+            <!-- Social media (instagram, twt, web) for news-->
+        </section>
+    </main>
+
+</body>
 
 </html>

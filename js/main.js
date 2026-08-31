@@ -1,22 +1,27 @@
-/* ----- Carousel (infinite loop, no visible cut, smooth) ----- */
+/* ============================================================
+   JavaScript — Dana: The Cyber Relic
+   Sections: Carousel (infinite loop, autoplay, controls),
+            Gallery (show more / less)
+   ============================================================ */
+
+/* ==========================================================
+   CAROUSEL
+   ========================================================== */
+
+// DOM references
 const windowEl = document.querySelector('.carousel-window');
 const track = document.querySelector('.carousel-track');
 const dots = document.querySelectorAll('.dot');
 
-// Single source of truth for the slide animation
+// Transition string used for smooth sliding
 const TRANSITION = 'transform 0.8s cubic-bezier(0.65, 0, 0.35, 1)';
 
-// Capture the original slides before touching the DOM
+// Original slides (without clones)
 const realItems = Array.from(document.querySelectorAll('.carousel-item'));
 const realCount = realItems.length;
 const startIndex = realItems.findIndex(item => item.classList.contains('active'));
 
-// Duplicate the FULL set on both sides (not just one item).
-// This matters because .carousel-item uses flex: 0 0 75%, so
-// neighbouring slides peek in from the sides. A single clone only
-// guarantees the *centered* slide matches at reset time — the
-// peeking neighbours would still swap abruptly. A full duplicate
-// on each side guarantees the whole visible neighbourhood matches.
+// Helper: clone all real items
 function cloneSet() {
     return realItems.map(item => {
         const clone = item.cloneNode(true);
@@ -25,19 +30,22 @@ function cloneSet() {
     });
 }
 
+// Build duplicated sets (prev and next)
 const prevSet = cloneSet();
 const nextSet = cloneSet();
 
 prevSet.forEach(node => track.insertBefore(node, track.firstChild));
 nextSet.forEach(node => track.appendChild(node));
 
-// items = [prevSet][realSet][nextSet]
+// Full item list = [prev clones] + [real] + [next clones]
 const items = Array.from(document.querySelectorAll('.carousel-item'));
 
-let current = realCount + startIndex; // start inside the middle (real) set
+// Current index points to the middle (real) set initially
+let current = realCount + startIndex;
 const AUTOPLAY_MS = 4000;
 let autoplayTimer = null;
 
+// Calculate the translation offset for a given index
 function slideOffset(index) {
     const gap = 24;
     const itemWidth = items[0].offsetWidth;
@@ -45,45 +53,40 @@ function slideOffset(index) {
     return index * (itemWidth + gap) - (containerWidth - itemWidth) / 2;
 }
 
+// Update active classes on items and dots
 function setActiveClasses(index) {
     items.forEach((item, i) => item.classList.toggle('active', i === index));
 
-    // Map back to a 0..realCount-1 logical index for the dots
+    // Map to logical index (0..realCount-1) for dots
     const logicalIndex = ((index - realCount) % realCount + realCount) % realCount;
     dots.forEach((dot, i) => dot.classList.toggle('active', i === logicalIndex));
 }
 
-// Animated move (user-triggered / autoplay)
+// Animated move (user-triggered or autoplay)
 function updateCarousel() {
     track.style.transition = TRANSITION;
     track.style.transform = `translateX(-${slideOffset(current)}px)`;
     setActiveClasses(current);
 }
 
-// Instant move, no animation — only ever used once we're sitting on
-// a fully-duplicated slide, so nothing visibly changes on screen
+// Instant move without animation (used for seamless looping)
 function jumpTo(index) {
     current = index;
 
-    // Disable the track's slide transition AND each item's own
-    // active-state transition (opacity/scale). Without the second
-    // part, swapping .active from the clone to the real item still
-    // plays that item's local transition, showing up as a second,
-    // misplaced "pop" animation right after the slide finishes.
     track.style.transition = 'none';
     items.forEach(item => { item.style.transition = 'none'; });
 
     track.style.transform = `translateX(-${slideOffset(current)}px)`;
     setActiveClasses(current);
 
-    // Force reflow so the browser commits the "no transition" state
-    // before we hand control back
+    // Force reflow to commit the no-transition state
     track.offsetHeight;
 
     track.style.transition = TRANSITION;
     items.forEach(item => { item.style.transition = ''; });
 }
 
+// Public methods
 function goTo(index) {
     current = index;
     updateCarousel();
@@ -92,14 +95,10 @@ function goTo(index) {
 function next() { goTo(current + 1); }
 function prev() { goTo(current - 1); }
 
+// Listen for transition end to perform seamless loop
 track.addEventListener('transitionend', (e) => {
-    // .carousel-item children also transition their own `transform`
-    // (the active scale effect) and transitionend bubbles up, so we
-    // must ignore anything that didn't originate on the track itself
     if (e.target !== track || e.propertyName !== 'transform') return;
 
-    // Once we've drifted into a fully-duplicated zone, silently
-    // recentre into the real (middle) set — neighbours match exactly
     if (current >= realCount * 2) {
         jumpTo(current - realCount);
     } else if (current < realCount) {
@@ -107,13 +106,22 @@ track.addEventListener('transitionend', (e) => {
     }
 });
 
-document.querySelector('.next').addEventListener('click', () => { next(); restartAutoplay(); });
-document.querySelector('.prev').addEventListener('click', () => { prev(); restartAutoplay(); });
+// Button controls
+const nextBtn = document.querySelector('.carousel .next');
+const prevBtn = document.querySelector('.carousel .prev');
 
+nextBtn.addEventListener('click', () => { next(); restartAutoplay(); });
+prevBtn.addEventListener('click', () => { prev(); restartAutoplay(); });
+
+// Dot controls
 dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => { goTo(realCount + index); restartAutoplay(); });
+    dot.addEventListener('click', () => {
+        goTo(realCount + index);
+        restartAutoplay();
+    });
 });
 
+// Autoplay functions
 function startAutoplay() {
     autoplayTimer = setInterval(next, AUTOPLAY_MS);
 }
@@ -123,12 +131,60 @@ function restartAutoplay() {
     startAutoplay();
 }
 
-// Pause on hover so it doesn't move while the user is looking at it
+// Pause on hover
 const carousel = document.querySelector('.carousel');
 carousel.addEventListener('mouseenter', () => clearInterval(autoplayTimer));
 carousel.addEventListener('mouseleave', startAutoplay);
 
+// Recalculate position on resize
 window.addEventListener('resize', () => jumpTo(current));
 
+// Initialise
 jumpTo(current);
 startAutoplay();
+
+
+/* ==========================================================
+   GALLERY — Show more / less
+   ========================================================== */
+
+const galleryGrid = document.getElementById('gallery-grid');
+const galleryToggle = document.getElementById('gallery-toggle');
+
+// Only run if the gallery elements exist
+if (galleryGrid && galleryToggle) {
+    const INITIAL_VISIBLE = 3;
+    const galleryItems = Array.from(galleryGrid.querySelectorAll('.gallery-item'));
+
+    // Hide items beyond the initial visible count
+    galleryItems.forEach((item, index) => {
+        if (index >= INITIAL_VISIBLE) item.classList.add('is-hidden');
+    });
+
+    // Hide toggle if there are no extra items
+    if (galleryItems.length <= INITIAL_VISIBLE) {
+        galleryToggle.style.display = 'none';
+    }
+
+    let expanded = false;
+
+    galleryToggle.addEventListener('click', () => {
+        expanded = !expanded;
+
+        galleryItems.forEach((item, index) => {
+            if (index >= INITIAL_VISIBLE) {
+                item.classList.toggle('is-hidden', !expanded);
+            }
+        });
+
+        galleryToggle.textContent = expanded ? 'Show Less' : 'Show More';
+
+        // When collapsing, scroll back to top of gallery
+        if (!expanded) {
+            document.getElementById('gallery').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+}
