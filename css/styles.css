@@ -1,0 +1,224 @@
+:root {
+    --accent1: #4de3ff;
+    --accent2: #ff3ea5;
+    --accent-dark: #290152;
+
+    --steam-btn: #1b2838;
+}
+
+
+/* ---------- Common Styles ---------- */
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: var(--accent1)
+}
+
+/* ---------- Hero ---------- */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 560px;
+
+    background-image: url('../assets/media/bg.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.trailer-block {
+    position: absolute;
+    right: 10vw;
+    bottom: 15vh;
+    width: min(42vw, 750px);
+    aspect-ratio: 16 / 9;
+}
+
+.trailer-frame {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    border-width: 2px;
+    overflow: hidden;
+    box-shadow:
+        0 0 0 2px rgba(77, 227, 255, 0.4),
+        0 20px 60px rgba(0, 0, 0, 0.55);
+    background: #000;
+}
+
+.trailer-frame iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+
+.steam-btn {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, 50%);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 22px;
+    border-radius: 999px;
+    background: var(--steam-btn);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(77, 227, 255, 0.35);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    z-index: 2;
+}
+
+.steam-btn:hover {
+    transform: translate(-50%, 50%) scale(1.04);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.6);
+}
+
+
+/* Steam Icon */
+.steam-btn img {
+    width: 20px;
+    height: 20px;
+}
+
+
+/* ----- Gallery ----- */
+
+#gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background: var(--accent-dark);
+}
+
+.carousel {
+    position: relative;
+    width: min(1200px, 90vw);
+    margin: 0 auto; 
+    overflow: hidden;
+    padding: 30px 0;
+}
+
+.carousel-window {
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 24px;
+
+    transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.carousel-item {
+    flex: 0 0 75%;
+
+    aspect-ratio: 16 / 9;
+
+    overflow: hidden;
+    border-radius: 12px;
+    border-width: 2px;
+
+    background: #000;
+
+    transition:
+    transform 0.4s ease,
+    opacity 0.4s ease;
+
+    opacity: 0.4;
+    transform: scale(0.92);
+}
+
+.carousel-item.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+
+    width: 48px;
+    height: 48px;
+
+    transform: translateY(-50%);
+
+    border: none;
+    border-radius: 50%;
+
+    background: var(--accent-dark);
+    color: white;
+
+    font-size: 30px;
+    line-height: 1;
+
+    align-content: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    z-index: 10;
+}
+
+.carousel-button:hover {
+    background: var(--accent2);
+    color: white;
+}
+
+.carousel-button.prev {
+    left: 15px;
+}
+
+.carousel-button.next {
+    right: 15px;
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+
+    margin-top: 20px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+    background: #555;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.dot.active {
+    background: white;
+    transform: scale(1.3);
+}

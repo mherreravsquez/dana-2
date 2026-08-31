@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>UlpoMedia</title>
+        <link rel="stylesheet" href="css/styles.css">
+        <script src="js/main.js" defer></script>
+    </head>
+
+    <body>
+
+        <main>
+            <section class="hero">
+
+                <div class="trailer-block">
+                    <div class="trailer-frame">
+                    <!-- Starts muted so autoplay is allowed; the gate below unmutes on click -->
+                        <iframe
+                            id="trailer-iframe"
+                            src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1&mute=1&loop=1&playlist=VIDEO_ID&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1"
+                            title="Dana: The Cyber Relic — Trailer"
+                            allow="autoplay; encrypted-media; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                
+                    <a class="steam-btn" href="https://store.steampowered.com/app/YOUR_APP_ID" target="_blank" rel="noopener">
+                    <img src="https://cdn.simpleicons.org/steam/ffffff" alt="">
+                    Wishlist on Steam!
+                    </a>
+                </div>
+
+            </section>
+
+            <section id="features">
+                <!-- Short description of the game -->
+                <!-- Movement, Levels, Narrative -->
+                <!-- Meme PS1 graphics (new gen graphics ultra) -->
+            </section>
+
+            <section id="gallery">
+                <!-- Gallery of screenshots + btn to download zip with presskit -->
+
+                 <div class="carousel">
+
+                    <button class="carousel-button prev">‹</button>
+
+                    <div class="carousel-window">
+                        <div class="carousel-track">
+
+                            <article class="carousel-item">
+                            <img src="./assets/media/bg.webp" alt="">
+                            </article>
+
+                            <article class="carousel-item active">
+                            <img src="./assets/media/bg.webp" alt="">
+                            </article>
+
+                            <article class="carousel-item">
+                            <img src="./assets/media/bg.webp" alt="">
+                            </article>
+
+                        </div>
+                    </div>
+
+                    <button class="carousel-button next">›</button>
+
+                    <div class="carousel-dots">
+                        <span class="dot"></span>
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section id="contact">
+                <!-- Social media (instagram, twt, web) for news-->
+            </section>
+        </main>
+
+    </body>
+
+</html>
