@@ -42,6 +42,52 @@ html, body {
     align-items: center;
 }
 
+.brand-log {
+    pointer-events: auto;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(77, 227, 255, 0.6);
+}
+
+.nav-menu {
+    pointer-events: auto;
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    padding: 10px 24px 10px 34px; 
+    
+    
+    background: rgba(41, 1, 82, 0.6);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid rgba(77, 227, 255, 0.4);
+    border-bottom: 1px solid rgba(77, 227, 255, 0.4);
+
+}
+
+
+.floating-btn {
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: all 0.25s ease;
+}
+
+.floating-btn:hover {
+    background: var(--accent1);
+    color: var(--accent-dark);
+    text-shadow: 0 0 10px rgba(77, 227, 255, 0.8);
+}
+
+
+
 
 /* ---------- Wave Divider ---------- */
 .wave-divider {
