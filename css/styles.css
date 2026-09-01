@@ -22,6 +22,27 @@ html, body {
     background: var(--accent1);
 }
 
+/* ---------- Header and Nav ---------- */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 24px 6vw;
+    background: transparent;
+    pointer-events: none;
+}
+
+.nav-bar {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
 /* ---------- Wave Divider ---------- */
 .wave-divider {
     width: 100%;
