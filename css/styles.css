@@ -35,7 +35,7 @@ html, body {
 }
 
 .nav-bar {
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -55,37 +55,59 @@ html, body {
 
 .nav-menu {
     pointer-events: auto;
+    position: relative;
     display: flex;
-    gap: 24px;
     align-items: center;
-    padding: 10px 24px 10px 34px; 
+    height: 48px;
+    padding: 0 0 0 24px;
+    margin: 0;
+    gap: 0; 
+    
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid var(--accent1);
     
     
-    background: rgba(41, 1, 82, 0.6);
-    backdrop-filter: blur(8px);
-    border-top: 1px solid rgba(77, 227, 255, 0.4);
-    border-bottom: 1px solid rgba(77, 227, 255, 0.4);
+    clip-path: polygon(16px 0, 100% 0, 100% 100%, 0 100%, 0 16px);
+    -webkit-clip-path: polygon(16px 0, 100% 0, 100% 100%, 0 100%, 0 16px);
 
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 
 .floating-btn {
-    display: inline-block;
-    color: #fff;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0 24px;
+    
+    
+    color: #ffffff;
     text-decoration: none;
-    font-size: 0.85rem;
+    font-size: 1.1rem;
     font-weight: 700;
-    letter-spacing: 0.08em;
+    line-height: 110%;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
-    transition: all 0.25s ease;
+    white-space: nowrap;
+    
+    background: transparent;
+    border: none;
+    transition: background 0.15s ease, color 0.15s ease;
 }
 
 .floating-btn:hover {
     background: var(--accent1);
-    color: var(--accent-dark);
-    text-shadow: 0 0 10px rgba(77, 227, 255, 0.8);
+    color: #000000;
+    text-shadow: none;
+    box-shadow: none;
+    transform: none;
 }
-
 
 
 
