@@ -8,21 +8,23 @@
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/main.js" defer></script>
 
-   
+
 </head>
 
 <body>
 
-   <header class="main-header">
+    <header class="main-header">
         <nav class="nav-bar">
-            <a href="#" class="brand-logo">DANA 2</a>
+            <a href="index.html" class="brand-logo">
+                <img src="./test.svg" alt="UlpoMedia Logo">
+            </a>
             <div class="nav-menu">
                 <a href="#trailer-iframe" class="floating-btn">Trailer</a>
                 <a href="#features" class="floating-btn">Features</a>
                 <a href="#gallery" class="floating-btn">Multimedia</a>
             </div>
         </nav>
-   </header> 
+    </header>
 
     <main>
         <!-- Hero Section -->
@@ -31,16 +33,15 @@
             <div class="trailer-block">
                 <div class="trailer-frame">
                     <!-- Starts muted so autoplay is allowed; the gate below unmutes on click -->
-                    <iframe
-                        id="trailer-iframe"
-                        src=https://www.youtube.com/embed/isPH5q84l7U?si=1_efWORRhOpNmluK?autoplay=1&mute=1&loop=1
-                        title="Dana: The Cyber Relic — Trailer"
-                        allow="autoplay; encrypted-media; picture-in-picture"
+                    <iframe id="trailer-iframe"
+                        src=https://www.youtube.com/embed/isPH5q84l7U?si=1_efWORRhOpNmluK&autoplay=1&mute=1&loop=1
+                        title="Dana: The Cyber Relic — Trailer" allow="autoplay; encrypted-media; picture-in-picture"
                         allowfullscreen>
                     </iframe>
                 </div>
 
-                <a class="steam-btn" href="https://store.steampowered.com/app/YOUR_APP_ID" target="_blank" rel="noopener">
+                <a class="steam-btn" href="https://store.steampowered.com/app/YOUR_APP_ID" target="_blank"
+                    rel="noopener">
                     <img src="https://cdn.simpleicons.org/steam/ffffff" alt="">
                     Wishlist on Steam!
                 </a>
@@ -51,7 +52,8 @@
         <!-- Wave divider -->
         <div class="wave-divider">
             <svg viewBox="0 0 1200 80" preserveAspectRatio="none" style="display:block; width:100%; height:100%;">
-                <path d="M0,80 L0,40 C300,80 600,0 900,40 C1050,60 1150,20 1200,40 L1200,80 Z" fill="var(--accent-dark)"/>
+                <path d="M0,80 L0,40 C300,80 600,0 900,40 C1050,60 1150,20 1200,40 L1200,80 Z"
+                    fill="var(--accent-dark)" />
             </svg>
         </div>
 
@@ -60,7 +62,8 @@
             <div class="feature-highlight">
                 <div class="feature-text">
                     <p class="feature-description">
-                        Dana 2 The Cyber Relic es un plataformero 3D en el que Dana consigue reliquias y pelea contra Bolseros!
+                        Dana 2 The Cyber Relic es un plataformero 3D en el que Dana consigue reliquias y pelea contra
+                        Bolseros!
                     </p>
                 </div>
 
@@ -107,7 +110,8 @@
                 <!-- Assign the .zip file route with the presskit -->
                 <a class="presskit-btn" href="./assets/press-kit/DANA2TheCyberRelic-Press-Kit.zip" download>
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                     Download Press Kit
                 </a>
@@ -125,11 +129,43 @@
             <button class="gallery-toggle" id="gallery-toggle" type="button">Show More</button>
         </section>
 
+
+    </main>
+
+    <footer class="main-footer">
         <!-- Contact Section (social media) -->
         <section id="contact">
             <!-- Social media (instagram, twt, web) for news-->
+            <div class="footer-brand">
+                <img src="./test.svg" alt="Footer-logo">
+                
+            </div>
+
+            <div class="footer-copy-brand">
+                <p class="footer-copy">©Ulpo Media SPA 2015 - 2026</p>
+            </div>
+
+            <!--Social Media-->
+            <div class="footer-socials">
+                <a href="https://www.instagram.com/ulpomedia" target="_blank" rel="noopener" class="social-btn"
+                    aria-label="Intagram">
+                    <img src="./assets/media/instagram-brands-solid-full.svg" alt="Instagram-icon">
+                    
+                </a>
+                <a href="https://x.com/ulpomedia" target="_blank" rel="noopener noreferrer" class="social-btn"
+                    aria-label="X">
+                     <img src="./assets/media/square-x-twitter-brands-solid-full.svg" alt="X-icon">
+                   
+                </a>
+
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/company/ulpo-media/" target="_blank" rel="noopener noreferrer"
+                    class="social-btn" aria-label="LinkedIn">
+                    <img src="./assets/media/square-linkedin-brands-solid-full.svg" alt="Linkedin">
+                </a>
+            </div>
         </section>
-    </main>
+    </footer>
 
 </body>
 
