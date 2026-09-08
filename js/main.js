@@ -12,6 +12,7 @@
 const windowEl = document.querySelector('.carousel-window');
 const track = document.querySelector('.carousel-track');
 const dots = document.querySelectorAll('.dot');
+const featureTexts = document.querySelectorAll(".feature-description")
 
 // Transition string used for smooth sliding
 const TRANSITION = 'transform 0.8s cubic-bezier(0.65, 0, 0.35, 1)';
@@ -60,6 +61,8 @@ function setActiveClasses(index) {
     // Map to logical index (0..realCount-1) for dots
     const logicalIndex = ((index - realCount) % realCount + realCount) % realCount;
     dots.forEach((dot, i) => dot.classList.toggle('active', i === logicalIndex));
+
+    featureTexts.forEach((text, i) => text.classList.toggle("active", i  === logicalIndex));
 }
 
 // Animated move (user-triggered or autoplay)

@@ -205,30 +205,51 @@ html, body {
 /* ---------- Features Section ---------- */
 #features {
     background: var(--accent-dark);
+    width: 100%;
+    overflow: hidden;
 }
 
 .feature-highlight {
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
-    gap: 48px;
-    max-width: 1200px;
+    gap: 60px;
+    max-width: 1600px; 
+    width: 92%;       
     margin: 0 auto;
-    padding: 80px 6vw;
+    padding: 100px 2vw;
 }
 
 .feature-text {
-    flex: 0 0 35%;
-    min-width: 280px;
-    justify-content: center;
+   flex: 0 0 32%;     
+    min-width: 320px;
+    position: relative;
+    display: grid;
+    align-items: center;
 }
 
 .feature-description {
+    grid-area: 1 / 1;
     margin: 0;
-    max-width: 46ch;
-    color: rgba(255, 255, 255, 0.75);
-    font-size: 1.05rem;
-    line-height: 1.6;
+    max-width: 100%;    /* Quitamos el límite de 46ch para que no se vea angosto */
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.45rem; /* Letra más grande e imponente */
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    text-shadow: 0 0 12px rgba(77, 227, 255, 0.25);
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+    pointer-events: none;
+}
+
+.feature-description.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
 }
 
 /* ---------- Carousel (inside Features) ---------- */
