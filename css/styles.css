@@ -121,86 +121,12 @@ html, body {
 .wave-divider {
     width: 100%;
     height: 80px;
-    margin-top: -1px;
-    background: transparent;
+    margin-top: -2px;
+    background-color: #100021;
     line-height: 0;
     overflow: hidden;
 }
 
-/* ---------- Hero Section ---------- */
-.hero {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    min-height: 560px;
-    background-image: url('../assets/media/bg.webp');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    overflow: hidden;
-}
-
-/* ---------- Trailer Block ---------- */
-.trailer-block {
-    position: absolute;
-    right: 10vw;
-    bottom: 15vh;
-    width: min(42vw, 750px);
-    aspect-ratio: 16 / 9;
-}
-
-.trailer-frame {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    border-width: 2px;
-    overflow: hidden;
-    box-shadow:
-        0 0 0 2px rgba(77, 227, 255, 0.4),
-        0 20px 60px rgba(0, 0, 0, 0.55);
-    background: #000;
-}
-
-.trailer-frame iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
-    display: block;
-}
-
-/* ---------- Steam Button ---------- */
-.steam-btn {
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    transform: translate(-50%, 50%);
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 22px;
-    border-radius: 999px;
-    background: var(--steam-btn);
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.95rem;
-    letter-spacing: 0.02em;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(77, 227, 255, 0.35);
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-    z-index: 2;
-}
-
-.steam-btn:hover {
-    transform: translate(-50%, 50%) scale(1.04);
-    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.6);
-}
-
-.steam-btn img {
-    width: 20px;
-    height: 20px;
-}
 
 /* ---------- Features Section ---------- */
 #features {
@@ -231,9 +157,9 @@ html, body {
 .feature-description {
     grid-area: 1 / 1;
     margin: 0;
-    max-width: 100%;    /* Quitamos el límite de 46ch para que no se vea angosto */
+    max-width: 100%;   
     color: rgba(255, 255, 255, 0.9);
-    font-size: 1.45rem; /* Letra más grande e imponente */
+    font-size: 1.45rem; 
     line-height: 1.5;
     letter-spacing: 0.02em;
     text-shadow: 0 0 12px rgba(77, 227, 255, 0.25);
@@ -521,4 +447,123 @@ html, body {
 .social-btn:hover img {
     filter: brightness(0) invert(1);
     transform: scale(1.1);
+}
+
+/* ==========================================================
+   RESPONSIVE GLOBAL (Header, Features, Gallery, Footer)
+   ========================================================== */
+
+
+@media (max-width: 900px) {
+    /* Header */
+    .main-header {
+        padding: 16px 4vw;
+    }
+
+    .brand-logo img {
+        height: 64px;
+    }
+
+    .nav-menu {
+        height: 40px;
+        padding-left: 14px;
+    }
+
+    .floating-btn {
+        padding: 0 14px;
+        font-size: 0.9rem;
+    }
+
+    /* Features */
+    .feature-highlight {
+        flex-direction: column;
+        align-items: center;
+        padding: 60px 4vw;
+        gap: 36px;
+    }
+
+    .feature-text {
+        flex: 1 1 100%;
+        width: 100%;
+        text-align: center;
+    }
+
+    .feature-description {
+        font-size: 1.2rem;
+    }
+
+    .carousel-item {
+        flex: 0 0 85%;
+    }
+
+    
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+
+    
+    #contact {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .footer-brand {
+        justify-content: center;
+    }
+
+    .footer-socials {
+        justify-content: center;
+    }
+}
+
+
+@media (max-width: 600px) {
+    .main-header {
+        padding: 12px 3vw;
+    }
+
+    .brand-logo img {
+        height: 48px;
+    }
+
+    .nav-menu {
+        height: 34px;
+        padding-left: 8px;
+    }
+
+    .floating-btn {
+        padding: 0 10px;
+        font-size: 0.75rem;
+    }
+
+    /* Features */
+    .feature-description {
+        font-size: 1.05rem;
+    }
+
+    .carousel-item {
+        flex: 0 0 92%;
+    }
+
+    .carousel-button {
+        width: 38px;
+        height: 38px;
+        font-size: 22px;
+    }
+
+    
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .main-footer {
+        padding: 36px 4vw;
+    }
 }

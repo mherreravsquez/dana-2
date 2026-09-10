@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UlpoMedia</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="./css/hero-section.css">
     <script src="js/main.js" defer></script>
-    <link rel="stylesheet" href="./css/hero-parallax.css">
+
 
 </head>
 
@@ -27,28 +28,63 @@
     </header>
 
     <main>
-        <!-- Hero Section -->
-        <section class="hero">
+        
+      <section class="hero">
 
+    <!-- Capa modular de nubes -->
+    <div class="hero-clouds">
+        <img src="./assets/background-hero-elements/clouds/nubes_01.png" class="cloud cloud-1" alt="Nube 1">
+        <img src="./assets/background-hero-elements/clouds/nubes_02.png" class="cloud cloud-2" alt="Nube 2">
+        <img src="./assets/background-hero-elements/clouds/nubes_03.png" class="cloud cloud-3" alt="Nube 3">
+        <img src="./assets/background-hero-elements/clouds/nubes_04.png" class="cloud cloud-4" alt="Nube 4">
+        <img src="./assets/background-hero-elements/clouds/nubes_05.png" class="cloud cloud-5" alt="Nube 5">
+        <img src="./assets/background-hero-elements/clouds/nubes_01.png" class="cloud cloud-6" alt="Nube 6">
+        <img src="./assets/background-hero-elements/clouds/nubes_02.png" class="cloud cloud-7" alt="Nube 7">
+        <img src="./assets/background-hero-elements/clouds/nubes_03.png" class="cloud cloud-8" alt="Nube 8">
+    </div>
+
+   
+    <div class="hero-layout">
+
+        <div class="hero-character" data-depth="26">
+            <img src="./assets/background-hero-elements/Dana2_Dana_01.png" alt="Dana">
+        </div>
+
+     
+        <div class="hero-game-logo" data-depth="16">
+            <img src="./assets/press-kit/DANA2_logo.webp" alt="Dana: The Cyber Relic Logo">
+        </div>
+
+       
+        <div class="hero-trailer-col">
             <div class="trailer-block">
+                
+                <div class="bolsero bolsero-peek" data-depth="12">
+                    <img src="./assets/media/Dana2_bolseros_02.png" alt="Bolsero asomándose">
+                </div>
+
                 <div class="trailer-frame">
-                    <!-- Starts muted so autoplay is allowed; the gate below unmutes on click -->
                     <iframe id="trailer-iframe"
-                        src=https://www.youtube.com/embed/isPH5q84l7U?si=1_efWORRhOpNmluK&autoplay=1&mute=1&loop=1
-                        title="Dana: The Cyber Relic — Trailer" allow="autoplay; encrypted-media; picture-in-picture"
+                        src="https://www.youtube.com/embed/isPH5q84l7U?si=1_efWORRhOpNmluK&autoplay=1&mute=1&loop=1"
+                        title="Dana: The Cyber Relic — Trailer" 
+                        allow="autoplay; encrypted-media; picture-in-picture"
                         allowfullscreen>
                     </iframe>
                 </div>
 
-                <a class="steam-btn" href="https://store.steampowered.com/app/YOUR_APP_ID" target="_blank"
-                    rel="noopener">
-                    <img src="https://cdn.simpleicons.org/steam/ffffff" alt="">
+                <div class="bolsero bolsero-float" data-depth="22">
+                    <img src="./assets/media/Dana2_bolseros_05.png" alt="Bolsero flotando">
+                </div>
+
+                <a class="steam-btn" href="https://store.steampowered.com/app/YOUR_APP_ID" target="_blank" rel="noopener">
+                    <img src="https://cdn.simpleicons.org/steam/ffffff" alt="Steam Icon">
                     Wishlist on Steam!
                 </a>
             </div>
+        </div>
 
-        </section>
-
+    </div>
+</section>
         <!-- Wave divider -->
         <div class="wave-divider">
             <svg viewBox="0 0 1200 80" preserveAspectRatio="none" style="display:block; width:100%; height:100%;">
@@ -123,12 +159,12 @@
             </div>
 
             <div class="gallery-grid" id="gallery-grid">
-                <figure class="gallery-item"><img src="./assets/media/bg.webp" alt=""></figure>
-                <figure class="gallery-item"><img src="./assets/media/bg.webp" alt=""></figure>
-                <figure class="gallery-item"><img src="./assets/media/bg.webp" alt=""></figure>
-                <figure class="gallery-item"><img src="./assets/media/bg.webp" alt=""></figure>
-                <figure class="gallery-item"><img src="./assets/media/bg.webp" alt=""></figure>
-                <figure class="gallery-item"><img src="./assets/media/bg.webp" alt=""></figure>
+                <figure class="gallery-item"><img src="./assets/multimediaSection/DanaScreenshot.png2026-09-08_12-29-23.png" alt=""></figure>
+                <figure class="gallery-item"><img src="./assets/multimediaSection/DanaScreenshot.png2026-09-08_12-32-23.png" alt=""></figure>
+                <figure class="gallery-item"><img src="./assets/multimediaSection/DanaScreenshot.png2026-09-08_12-33-21.png" alt=""></figure>
+                <figure class="gallery-item"><img src="./assets/multimediaSection/DanaScreenshot.png2026-09-08_12-33-21.png" alt=""></figure>
+                <figure class="gallery-item"><img src="./assets/multimediaSection/DanaScreenshot.png2026-09-08_12-40-18.png" alt=""></figure>
+                <figure class="gallery-item"><img src="./assets/multimediaSection/DanaScreenshot.png2026-09-08_12-42-53.png" alt=""></figure>
             </div>
 
             <button class="gallery-toggle" id="gallery-toggle" type="button">Show More</button>
@@ -142,7 +178,7 @@
         <section id="contact">
             <!-- Social media (instagram, twt, web) for news-->
             <div class="footer-brand">
-                <img src="./test.svg" alt="Footer-logo">
+                <img src="./assets/test.svg" alt="Footer-logo">
 
             </div>
 

@@ -1,0 +1,379 @@
+/* ==========================================================
+   HERO SECTION BASE
+   ========================================================== */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 560px;
+    background-image: url('../assets/background-hero-elements/Dana2_background_01.png');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+/* ---------- Capa de Nubes ---------- */
+.hero-clouds {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.cloud {
+    position: absolute;
+    display: block;
+    user-select: none;
+    will-change: transform;
+    animation: moveClouds linear infinite;
+}
+
+@keyframes moveClouds {
+    0% {
+        transform: translate3d(100vw, 0, 0);
+    }
+    100% {
+        transform: translate3d(-320px, 0, 0);
+    }
+}
+
+/* Secuencia continua y pausada de 8 nubes */
+.cloud-1 { top: 4%;  width: 210px; opacity: 0.85; animation-duration: 46s; animation-delay: 0s; }
+.cloud-2 { top: 12%; width: 130px; opacity: 0.65; animation-duration: 52s; animation-delay: -6s; }
+.cloud-3 { top: 19%; width: 270px; opacity: 0.90; animation-duration: 42s; animation-delay: -12s; }
+.cloud-4 { top: 7%;  width: 160px; opacity: 0.75; animation-duration: 48s; animation-delay: -18s; }
+.cloud-5 { top: 15%; width: 140px; opacity: 0.70; animation-duration: 50s; animation-delay: -24s; }
+.cloud-6 { top: 6%;  width: 190px; opacity: 0.80; animation-duration: 44s; animation-delay: -30s; }
+.cloud-7 { top: 22%; width: 230px; opacity: 0.75; animation-duration: 43s; animation-delay: -36s; }
+.cloud-8 { top: 10%; width: 150px; opacity: 0.60; animation-duration: 49s; animation-delay: -42s; }
+
+/* ==========================================================
+   MASTER LAYOUT: 3 COLUMNAS AMPLIAS (Escritorio)
+   ========================================================== */
+.hero-layout {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+   
+    grid-template-columns: minmax(360px, 1.25fr) minmax(260px, auto) minmax(440px, 1.55fr);
+    align-items: center; 
+    padding: 0 2vw 0 1vw;
+    gap: clamp(8px, 1.2vw, 20px);
+    z-index: 2;
+}
+
+/* ---------- COLUMNA 1: DANA (Pegada al piso y extendida) ---------- */
+.hero-character {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding-bottom: 0;
+    pointer-events: none;
+    will-change: transform;
+    transition: transform 0.12s ease-out;
+    
+}
+
+.hero-character img {
+    height: 84vh;
+    max-height: 760px;
+    width: auto;
+    max-width: 100%;
+    display: block;
+    object-fit: contain;
+    animation: sideEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+}
+
+/* ---------- COLUMNA 2: LOGO (Solapado sobre Dana) ---------- */
+.hero-game-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+  
+    margin-left: -10vw;
+    margin-right: 2vw;
+    z-index: 3; 
+    pointer-events: none;
+    will-change: transform;
+    transition: transform 0.14s ease-out;
+}
+
+.hero-game-logo img {
+    width: clamp(320px, 30vw, 500px);
+    height: auto;
+    display: block;
+    object-fit: contain;
+    filter: drop-shadow(0 0 30px rgba(77, 227, 255, 0.55)) drop-shadow(0 10px 20px rgba(0, 0, 0, 0.7));
+    animation: sideEntrance 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ---------- COLUMNA 3: TRAILER + BOLSEROS ---------- */
+.hero-trailer-col {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 1.5vw;
+}
+
+.trailer-block {
+    position: relative;
+    width: 100%;
+    max-width: 760px;
+    aspect-ratio: 16 / 9;
+}
+
+.trailer-frame {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    border-width: 2px;
+    overflow: hidden;
+    box-shadow:
+        0 0 0 2px rgba(77, 227, 255, 0.4),
+        0 20px 60px rgba(0, 0, 0, 0.55);
+    background: #000;
+    z-index: 2;
+}
+
+.trailer-frame iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+
+/* ---------- Bolseros ---------- */
+.bolsero {
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+}
+
+.bolsero img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.45));
+}
+
+.bolsero-peek {
+    top: -18%;
+    left: 12%; 
+    width: clamp(70px, 8vw, 110px);
+    z-index: 1; 
+    transform: translateY(4px); 
+}
+
+.bolsero-float {
+    bottom: -40px; 
+    right: -40px;  
+    width: clamp(80px, 8.5vw, 120px);
+    z-index: 3; 
+}
+
+/* ---------- Botón de Steam ---------- */
+.steam-btn {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, 50%);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 24px;
+    border-radius: 999px;
+    background: var(--steam-btn, #171a21);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(77, 227, 255, 0.35);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    z-index: 4;
+}
+
+.steam-btn:hover {
+    transform: translate(-50%, 50%) scale(1.04);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.6);
+}
+
+.steam-btn img {
+    width: 20px;
+    height: 20px;
+}
+
+/* ==========================================================
+   ANIMACIONES BASE
+   ========================================================== */
+@keyframes sideEntrance {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ==========================================================
+   BREAKPOINTS RESPONSIVOS (Tablet y Móvil)
+   ========================================================== */
+
+
+/* Solo aplica en pantallas de escritorio amplias (Laptops grandes, 1080p, 2K, etc.) */
+
+@media (min-width: 1200px) {
+    .hero-character {
+        margin-right: 60px;
+    }
+}
+
+/* Tablets / Dispositivos en orientación vertical */
+@media (max-width: 1024px) and (orientation: portrait) {
+    .hero {
+        height: auto;
+        min-height: 100vh;
+        padding-top: 100px;
+        padding-bottom: 0;
+    }
+
+    .hero-layout {
+        position: relative;
+        inset: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 28px;
+        padding: 0 4vw;
+    }
+
+    .hero-game-logo {
+        order: 1;
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .hero-game-logo img {
+        width: clamp(260px, 45vw, 360px);
+    }
+
+    .hero-trailer-col {
+        order: 2;
+        padding-right: 0;
+        justify-content: center;
+    }
+
+    .trailer-block {
+        width: 100%;
+        max-width: 640px;
+    }
+
+    .hero-character {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        align-items: flex-end;
+    }
+
+    .hero-character img {
+        height: 48vh;
+        max-height: 450px;
+    }
+
+    .bolsero-peek {
+        display: none;
+    }
+}
+
+/* Móviles (Phone SE, iPhones, Androids) */
+@media (max-width: 640px) {
+    .hero {
+        height: auto;
+        min-height: 100vh;
+        padding-top: 75px;
+        padding-bottom: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .hero-layout {
+        position: relative;
+        inset: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 0 4vw;
+        height: 100%;
+    }
+
+    .hero-game-logo {
+        order: 1;
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .hero-game-logo img {
+        width: 82%;
+        max-width: 280px;
+    }
+
+    .hero-trailer-col {
+        order: 2;
+        width: 100%;
+        padding-right: 0;
+        justify-content: center;
+    }
+
+    .trailer-block {
+        width: 100%;
+        max-width: 100%;
+    }
+
+   .bolsero-peek {
+        display: none;
+    }
+
+    .bolsero-float {
+        bottom: -20px;
+        right: -15px;
+        width: 60px;
+    }
+
+    /* Dana en Móvil: Anclada al borde inferior sin deformarse */
+    .hero-character {
+        order: 3;
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        margin-top: 15px;
+    }
+
+    .hero-character img {
+        height: auto;
+        width: 78%;
+        max-width: 290px;
+        max-height: none;
+        object-fit: contain;
+    }
+}
